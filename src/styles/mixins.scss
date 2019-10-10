@@ -1,0 +1,6 @@
+@mixin w_h($w: 100%, $h:100%) {
+  width: $w;
+  height: $h;
+
+  @content;
+}

@@ -1,10 +1,9 @@
 import React from 'react';
+import Layout from './hoc/Layout/Layout';
 
 const App: React.FC = (): JSX.Element => {
   return (
-    <div className="App">
-
-    </div>
+    <Layout />
   );
 };
 

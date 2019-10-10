@@ -1,0 +1,13 @@
+@import "styles/mixins";
+
+.Layout {
+  @include w_h(100vw, 100vh) {
+    display: flex;
+    flex-direction: column;
+  }
+  &-main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+}
