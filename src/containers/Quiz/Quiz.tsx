@@ -3,9 +3,14 @@ import classes from './Quiz.module.scss';
 import { IQuiz, IQuizItem } from 'interfaces';
 import ActiveQuiz from 'components/ActiveQuiz/ActiveQuiz';
 import FinishedQuiz from 'components/FinishedQuiz/FinishedQuiz';
+import { RouteComponentProps } from 'react-router';
 
-export default class Quiz extends Component<any, IQuiz> {
-    state: IQuiz = {
+interface MatchParams {
+    id: string;
+}
+
+export class Quiz extends Component<RouteComponentProps<MatchParams>, IQuiz> {
+    readonly state: IQuiz = {
         activeQuestionNumber: 0,
         answerState: null,
         isFinished: false,
@@ -91,6 +96,10 @@ export default class Quiz extends Component<any, IQuiz> {
             });
         }
     };
+
+    componentDidMount(): void {
+        console.log(this.props.match.params.id);
+    }
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         return (

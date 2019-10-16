@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import classes from './ActiveQuiz.module.scss';
 import { IActiveQuiz } from 'interfaces';
 import AnswersList from './AnwersList/AnswersList';
 
-const ActiveQuiz = (props: IActiveQuiz): JSX.Element => {
+const ActiveQuiz: FunctionComponent<IActiveQuiz> = (props): JSX.Element => {
     return (
         <div className={classes.ActiveQuiz}>
             <p className={classes['ActiveQuiz-Question']}>

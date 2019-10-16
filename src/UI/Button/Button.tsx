@@ -1,9 +1,24 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
+import Utils from 'utils';
+import { IButton } from './IButton';
 
 import classes from './Button.module.scss';
 
-export default class Button extends Component {
-    render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-        return undefined;
-    }
-}
+const Button: FunctionComponent<IButton> = (props) => {
+    const cls = [
+        classes.Button,
+        classes[(props.type && Utils.toUpperCase(props.type)) || 'Primary']
+    ];
+
+    return (
+        <button
+            onClick={props.onClick}
+            className={cls.join(' ')}
+            disabled={props.disabled}
+        >
+            { props.children }
+        </button>
+    );
+};
+
+export default Button;

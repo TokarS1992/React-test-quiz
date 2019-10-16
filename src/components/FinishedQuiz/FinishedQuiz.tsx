@@ -1,14 +1,17 @@
-import React from 'react';
-import classes from './FinishedQuiz.module.scss';
+import React, { FunctionComponent } from 'react';
 import { IFinishedQuiz } from 'interfaces/props';
 import { IQuizItem, TAnswerState } from 'interfaces/states';
-import Utils from '../../utils';
+import Button from 'UI/Button/Button';
+import Utils from 'utils';
+import { Link } from 'react-router-dom';
+
+import classes from './FinishedQuiz.module.scss';
 
 interface IProps extends IFinishedQuiz {
     onRetryClick(): void;
 }
 
-const FinishedQuiz = (props: IProps): JSX.Element => {
+const FinishedQuiz: FunctionComponent<IProps> = (props): JSX.Element => {
     const successCount: number = Object.values(props.results).filter((answer: TAnswerState) => answer === 'success').length;
 
     return (
@@ -38,7 +41,20 @@ const FinishedQuiz = (props: IProps): JSX.Element => {
             <p>Правильно { successCount } из { props.quiz.length }</p>
 
             <div>
-                <button onClick={() => {props.onRetryClick()}}>Повторить</button>
+                <Button
+                    onClick={props.onRetryClick}
+                    type='Primary'
+                >
+                    Повторить
+                </Button>
+
+                <Link to='/'>
+                    <Button
+                        type='Success'
+                    >
+                        Перейти в список тестов
+                    </Button>
+                </Link>
             </div>
         </div>
     );
